@@ -2439,7 +2439,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     local RenUi = library:AddWindow("Ren Hub | BF", Enum.KeyCode.RightControl)
     --------------------------------------------------------------------
     local Main = RenUi:AddTab("Auto Farm", "6026568198")
-    local Event = RenUi:AddTab("Event", "6136668198")
+    local Events = RenUi:AddTab("Events", "6136668198")
     local Combat = RenUi:AddTab("Combat", "7251993295")
     local Stats = RenUi:AddTab("Stats", "7040410130")
     local Teleport = RenUi:AddTab("Teleport", "6035190846")
