@@ -3226,11 +3226,9 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         end)
     end
 
-    Main:AddSeperator("Setting Farm Mode")
-
-    local ListMode = {"Normal Mode", "Fast Mode", "No Quest", "Fruit Mastery Mode", "Gun Mastery Mode"}
-    Main:AddDropdown("Select Mode Farm", _G.Select_Mode_Farm, function(Value)
-        _G.Select_Mode_Farm = Value
+    List_Mode = {"Normal Mode","Fast Mode","No Quest","Fruit Mastery Mode","Gun Mastery Mode"}
+    Main:AddDropdown("Select Mode Farm", List_Mode, function(value)
+        List_Mode = Value
     end)
 
     Main:AddSeperator("Fighting Style")
@@ -5956,111 +5954,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         end
     end)
 
-    Events:AddSeperator("Xmas")
 
-    Events:AddToggle("Auto Xmas", _G.AutoXmas, function(value)
-        _G.AutoXmas = value
-        StopNoClip(_G.AutoXmas)
-    end)
-
-    Events:AddToggle("Auto Xmas Hop", _G.AutoXmas_Hop, function(value)
-        _G.AutoXmas_Hop = value
-    end)
-
-    spawn(function()
-        while wait() do
-            if _G.AutoXmas then
-                pcall(function()
-                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Santa [Lv. 5000]") then
-                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                            if v.Name == "Santa [Lv. 5000]" and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    AutoHaki()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    TP(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    if _G.AutoSkill then
-                                        UseSkill("Z")
-                                        UseSkill("X")
-                                        UseSkill("C")
-                                        UseSkill("V")
-                                    end
-                                    VirtualUser:CaptureController()
-                                    VirtualUser:ClickButton1(Vector2.new(1280, 672))
-                                until v.Humanoid.Health <= 0 or not _G.AutoXmas
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Santa [Lv. 5000]") then
-                            TP(game:GetService("ReplicatedStorage").MOB:FindFirstChild("Santa [Lv. 5000]")
-                                   .HumanoidRootPart.CFrame * MethodFarm)
-                        else
-                            if _G.AutoXmas_Hop then
-                                Hop()
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-
-    Events:AddSeperator("Santa Events")
-
-    Events:AddToggle("Auto Santa Events", _G.AutoSantaEvents, function(value)
-        _G.AutoSantaEvents = value
-        StopNoClip(_G.AutoSantaEvents)
-    end)
-
-    Events:AddToggle("Auto Santa Events Hop", _G.AutoSantaEvents_Hop, function(value)
-        _G.AutoSantaEvents_Hop = value
-    end)
-
-    spawn(function()
-        while wait() do
-            if _G.AutoSantaEvents then
-                pcall(function()
-                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Kris Kringle [Lv. 10000]") then
-                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                            if v.Name == "Kris Kringle [Lv. 10000]" and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    AutoHaki()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    TP(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    if _G.AutoSkill then
-                                        UseSkill("Z")
-                                        UseSkill("X")
-                                        UseSkill("C")
-                                        UseSkill("V")
-                                    end
-                                    VirtualUser:CaptureController()
-                                    VirtualUser:ClickButton1(Vector2.new(1280, 672))
-                                until v.Humanoid.Health <= 0 or not _G.AutoSantaEvents
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Kris Kringle [Lv. 10000]") then
-                            TP(game:GetService("ReplicatedStorage").MOB:FindFirstChild("Kris Kringle [Lv. 10000]")
-                                   .HumanoidRootPart.CFrame * MethodFarm)
-                        else
-                            if game.Players.LocalPlayer.Character:FindFirstChild("CandySanta") or
-                                game.Players.LocalPlayer.Backpack:FindFirstChild("CandySanta") then
-                                EquipWeapon("CandySanta")
-                                TP(CFrame.new(11059.3721, 60.9907608, 6062.66211, -0.545285046, -9.39939824e-08,
-                                    -0.838250697, -6.01143739e-08, 1, -7.30264986e-08, 0.838250697, 1.0570659e-08,
-                                    -0.545285046))
-                            else
-                                if _G.AutoSantaEvents_Hop then
-                                    Hop()
-                                end
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
 
     local plyserv = Combat:AddLabel("Players")
 
@@ -9518,7 +9412,6 @@ elseif game.PlaceId == 4520749081 or game.PlaceId == 6381829480 or game.PlaceId 
     local RenUi = library:AddWindow("Ren Hub | KL", Enum.KeyCode.RightControl)
     --
     local Main = RenUi:AddTab("Auto Farm", "6026568198")
-    local Events = RenUi:AddTab("Events", "6026568198")
     local Stats = RenUi:AddTab("Stats", "7040410130")
     local Combat = RenUi:AddTab("Combat", "7251993295")
     local Teleport = RenUi:AddTab("Teleport", "7044226690")
@@ -13049,6 +12942,53 @@ elseif game.PlaceId == 6329844902 then
 
     Shop:AddButton("Buso Color", function()
         game:GetService("ReplicatedStorage").HakiColour:InvokeServer()
+    end)
+
+    Misc:AddToggle("Auto Xmas", _G.AutoXmas, function(value)
+        _G.AutoXmas = value
+        StopNoClip(_G.AutoXmas)
+    end)
+
+    Misc:AddToggle("Auto Xmas Hop", _G.AutoXmas_Hop, function(value)
+        _G.AutoXmas_Hop = value
+    end)
+
+    spawn(function()
+        while wait() do
+            if _G.AutoXmas then
+                pcall(function()
+                    if game:GetService("Workspace").Monster.Boss:FindFirstChild("Santa [Lv. 5000]") then
+                        for i, v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                            if v.Name == "Santa [Lv. 5000]" and v.Humanoid.Health > 0 then
+                                repeat
+                                    task.wait()
+                                    AutoHaki()
+                                    EquipWeapon(_G.SelectWeapon)
+                                    TP(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    if _G.AutoSkill then
+                                        UseSkill("Z")
+                                        UseSkill("X")
+                                        UseSkill("C")
+                                        UseSkill("V")
+                                    end
+                                    VirtualUser:CaptureController()
+                                    VirtualUser:ClickButton1(Vector2.new(1280, 672))
+                                until v.Humanoid.Health <= 0 or not _G.AutoXmas
+                            end
+                        end
+                    else
+                        if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Santa [Lv. 5000]") then
+                            TP(game:GetService("ReplicatedStorage").MOB:FindFirstChild("Santa [Lv. 5000]")
+                                   .HumanoidRootPart.CFrame * MethodFarm)
+                        else
+                            if _G.AutoXmas_Hop then
+                                Hop()
+                            end
+                        end
+                    end
+                end)
+            end
+        end
     end)
 
     Misc:AddSeperator("Server")
