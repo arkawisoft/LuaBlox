@@ -1579,7 +1579,7 @@ end)
 
 --------------------------------------------
 
-local library = loadstring(game:HttpGet("https://pastebin.com/raw/8W527aGg"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/arkawisoft/MyExp/main/BF/uitesting.lua"))()
 local Wait = library.subs.Wait
 
 local PepsisWorld = library:CreateWindow({
