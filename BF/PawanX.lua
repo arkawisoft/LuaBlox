@@ -2594,7 +2594,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     spawn(function()
         while wait() do
             if _G.Auto_Farm_Level then
-                if _G.Select_Mode_Farm == "Normal Mode" then
+                if List_Mode == "Normal Mode" then
                     pcall(function()
                         if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container
                                                .QuestTitle.Title.Text, NameMon) then
@@ -2665,7 +2665,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                             end
                         end
                     end)
-                elseif _G.Select_Mode_Farm == "Fast Mode" then
+                elseif List_Mode == "Fast Mode" then
                     pcall(function()
                         if game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value == SPAWNPOINT then
                             if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container
@@ -2735,7 +2735,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                             until game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value == SPAWNPOINT
                         end
                     end)
-                elseif _G.Select_Mode_Farm == "No Quest" then
+                elseif List_Mode == "No Quest" then
                     pcall(function()
                         CheckQuest()
                         if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
@@ -2774,7 +2774,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                             end
                         end
                     end)
-                elseif _G.Select_Mode_Farm == "Fruit Mastery Mode" then
+                elseif List_Mode == "Fruit Mastery Mode" then
                     pcall(function()
                         if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                             MasteryBFMagnetActive = false
@@ -2948,7 +2948,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                             end
                         end
                     end)
-                elseif _G.Select_Mode_Farm == "Gun Mastery Mode" then
+                elseif List_Mode == "Gun Mastery Mode" then
                     pcall(function()
                         if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
                             MasteryGunMagnetActive = false
