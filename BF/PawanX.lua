@@ -2615,17 +2615,10 @@ end)
 
 Main:AddSeperator("Main")
 
-local AutoFarm = Main:AddToggle({
-    Name = "Auto Farm Level",
-    Flag = "Auto Farm Level",
-    value = _G.AutoFarm,
-    Calback = function(value)
+Main:AddToggle("Auto Farm Level",_G.AutoFarm,function(value)
         _G.AutoFarm = value
-        _G.Settings.Auto_Farm_Level = value
-        saveSettings()
         StopTween(_G.AutoFarm)
-    end
-})
+end)
 
 spawn(function()
     game:GetService("RunService").Heartbeat:Connect(function()
